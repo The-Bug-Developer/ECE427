@@ -4,9 +4,15 @@ from scipy import signal as sig
 from math import pi, exp, cos, sin, log, sqrt
 from control import margin
 from control import tf
-t = np.arange(0,5*1.5e-6,1e-8)
-x = np.zeros(len(t))
+from datetime import datetime
+
+now = datetime.now()
+
+First_time = now
 Tau = 1.5e-6
+t = np.arange(0,5*Tau,1e-8)
+x = np.zeros(len(t))
+
 for i in range(len(t)):
     x[i] = 3-2.8*exp(-t[i]/(Tau))
 
@@ -40,3 +46,8 @@ plt.xlabel('t ($\mu$s)',size = 12)
 plt.title('Figure 2.2',size=18)
 plt.grid(which='both')
 plt.savefig('Figure_2.2.png',dpi=600)
+
+now = datetime.now()
+change = now-First_time
+
+print(change)
